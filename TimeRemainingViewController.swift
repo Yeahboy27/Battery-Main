@@ -24,6 +24,11 @@ class TimeRemainingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func batteryDidChange() {
+        percentage.text = String(describing: Int(100 * (UIDevice.current.batteryLevel))) + "%"
+        percentageCurrent = percentageCurrent.setMultiplier(multiplier: CGFloat(UIDevice.current.batteryLevel))
+    }
+    
 }
 
 extension NSLayoutConstraint {

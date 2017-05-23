@@ -10,14 +10,7 @@ import UIKit
 
 class ActivityIndicatorView: UIView {
     var color: UIColor = UIColor.red
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        self.backgroundColor = UIColor.clear
-//        self.layer.masksToBounds = true
-//        self.layer.cornerRadius = self.frame.size.width/2
-//        self.addAnimation()
-//    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addAnimation()

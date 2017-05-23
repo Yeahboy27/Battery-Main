@@ -19,6 +19,7 @@ class BatteryHealthViewController: UIViewController {
         super.viewDidLoad()
         durability = UserDefaults.standard.double(forKey: "Durability")
         waveIndicator.progress = durability
+        
         if(durability < 0.75) {
             let badColor  = UIColor(hexString: "FF5700")
             qualityLabel.text = "Bad"
@@ -87,5 +88,4 @@ extension UIColor {
         return (coreImageColor.red, coreImageColor.green, coreImageColor.blue, coreImageColor.alpha)
     }
 }
-
 

@@ -43,13 +43,17 @@ class BatteryInfoTableViewController: UITableViewController {
     func ioKitDataUpdated() {
         if let draven = (EEIOKitListener.shared().chargerDict! as NSDictionary)["MaxCapacity"] {
             actualBattery = String(describing: draven)
-            if let _fullCharged = constantCapactiyDevice[userDeviceName()] {
+            if let _fullCharged = constantCapactiyDevice[UIDevice.current.userDeviceName()] {
                 batteryCharge.text = actualBattery + "/" + String(_fullCharged) + " mAh"
                 UIDevice.current.isBatteryMonitoringEnabled = true
-                capacity = Int((UIDevice.current.batteryLevel) * Float(_fullCharged))
+                capacity = Int((UIDevice.current.batteryLevel) * Float(actualBattery)!)
                 currentCapacity.text = String(capacity) + "/" + actualBattery + " mAh"
                 if let _actualBattery = draven as? Double {
-                    UserDefaults.standard.set(Double(_actualBattery/Double(_fullCharged)), forKey: "Durability")
+                    var battery: Double  = Double(_actualBattery/Double(_fullCharged))
+                    if(battery > 1) {
+                        battery = 1
+                    }
+                    UserDefaults.standard.set(battery, forKey: "Durability")
                 }
             }
         }
@@ -61,7 +65,7 @@ class BatteryInfoTableViewController: UITableViewController {
         
     }
 }
-extension UITableViewController {
+extension UIDevice {
     
         func userDeviceName() -> String {
             var name: [Int32] = [CTL_HW, HW_MACHINE]
@@ -155,8 +159,28 @@ extension UITableViewController {
             else if platform == "i386"        { return "Simulator" }
             else if platform == "x86_64"      { return "Simulator"}
             else { return "iPhone 6" }
-            return platform
         }
 }
 
+extension UIDevice {
+    func sizeDevice() ->  Double {
+        if(self.userDeviceName() == "iPhone 3G" || self.userDeviceName() == "iPhone 3GS" || self.userDeviceName() ==   "iPhone 4" || self.userDeviceName() ==   "iPhone 4S" ) {
+            return 3.5
+        } else if(self.userDeviceName() ==  "iPhone 5"  || self.userDeviceName() == "iPhone 5c" || self.userDeviceName() == "iPhone 5s" || self.userDeviceName() ==  "iPhone SE" ) {
+            return 4.0
+        } else if (self.userDeviceName() == "iPhone 6"     || self.userDeviceName() == "iPhone 7" ) {
+            return 4.7
+        } else if (self.userDeviceName() == "iPhone 6s Plus" || self.userDeviceName() == "iPhone 7 Plus" || self.userDeviceName() == "iPhone 6 Plus") {
+            return 5.5
+        } else if(self.userDeviceName() == "iPad 1" || self.userDeviceName() == "iPad 2" || self.userDeviceName() == "iPad 3" || self.userDeviceName() == "iPad 4" || self.userDeviceName() == "iPad Air" || self.userDeviceName() == "iPad Air 2" || self.userDeviceName() == "iPad Pro 9.7" || self.userDeviceName() == "iPad (5th generation)") {
+            return 9.7
+        } else if(self.userDeviceName() == "iPad Mini" || self.userDeviceName() == "iPad Mini 2" || self.userDeviceName() == "iPad Mini 3" || self.userDeviceName() == "iPad Mini 4") {
+            return 7.9
+        } else if(self.userDeviceName() == "iPad Pro 12.9") {
+            return 12.9
+        } else {
+            return 4.7
+        }
+    }
+}
 

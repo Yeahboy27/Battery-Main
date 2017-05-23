@@ -9,6 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UIPageViewControllerDelegate {
+    let pageIdentifier = ["BatteryHealth", "TimeRemaining", "HardwareInformation"]
     var pageViewController: UIPageViewController?
     var modelController: PageModelController {
         if _modelController == nil {
@@ -27,12 +28,12 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
         self.pageViewController?.delegate = self
         self.pageControl.numberOfPages = 3
         
-        let startingViewController = storyboard?.instantiateViewController(withIdentifier: "BatteryHealth") as! UIViewController
+        let startingViewController = storyboard?.instantiateViewController(withIdentifier: "BatteryHealth")
         let viewControllers = [startingViewController]
-        self.pageViewController?.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in})
+        self.pageViewController?.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true, completion: {done in})
         self.pageViewController?.dataSource = self.modelController
         self.addChildViewController(pageViewController!)
-        self.view.addSubview((pageViewController?.view)!)
+        self.view.insertSubview((pageViewController?.view)!, at: 0)
         
         var pageViewRect = self.view.bounds
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -48,19 +49,13 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if(!completed) {
-            return
-        }
-        if(previousViewControllers == nil) {
-            self.pageControl.currentPage = 0
-        }
-        if let previous = previousViewControllers as? BatteryHealthViewController {
-            self.pageControl.currentPage = 1
-        }
-        if let previous = previousViewControllers as? TimeRemainingViewController {
-            self.pageControl.currentPage = 2
-        }
-        
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        let pageContentViewController = pendingViewControllers[0]
+        self.pageControl.currentPage = indexOfViewController(pageContentViewController)
     }
+    
+    func indexOfViewController(_ viewController: UIViewController) -> Int {
+        return pageIdentifier.index(of: viewController.restorationIdentifier!) ?? NSNotFound
+    }
+
 }

@@ -25,35 +25,31 @@ class TimeRemainingTableViewController: UITableViewController {
         
         durability = UserDefaults.standard.double(forKey: "Durability")
         
-        talktimeLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[0])! * Double(UIDevice.current.batteryLevel) * durability))
+        talktimeLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[0])! * Double(UIDevice.current.batteryLevel) * durability))
         
-        time3gLabel.text  = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[1])! * Double(UIDevice.current.batteryLevel) * durability))
+        time3gLabel.text  = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[1])! * Double(UIDevice.current.batteryLevel) * durability))
         
-        time4gLabel.text = String(describing: getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[1])! * Double(UIDevice.current.batteryLevel) * durability))
+        time4gLabel.text = String(describing: getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[1])! * Double(UIDevice.current.batteryLevel) * durability))
         
-        timewifiLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[2])! * Double(UIDevice.current.batteryLevel) * durability))
+        timewifiLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[2])! * Double(UIDevice.current.batteryLevel) * durability))
         
-        timevideoLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[3])! * Double(UIDevice.current.batteryLevel) * durability))
+        timevideoLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[3])! * Double(UIDevice.current.batteryLevel) * durability))
         
-        timeAudioLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[4])! * Double(UIDevice.current.batteryLevel) * durability))
+        timeAudioLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[4])! * Double(UIDevice.current.batteryLevel) * durability))
         
-        timeStandbyLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[userDeviceName()]?[5])! * Double(UIDevice.current.batteryLevel) * durability))
+        timeStandbyLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[5])! * Double(UIDevice.current.batteryLevel) * durability))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 7
     }
 }

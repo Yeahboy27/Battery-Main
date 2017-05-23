@@ -38,7 +38,7 @@ class PageModelController: NSObject, UIPageViewControllerDataSource {
             let timeremainingViewController = storyboard.instantiateViewController(withIdentifier: "TimeRemaining") as! TimeRemainingViewController
             return timeremainingViewController
         case 2:
-            let hardwareInformationViewController = storyboard.instantiateViewController(withIdentifier: "HardwareInformation") as! HardwareInformationViewController
+            let hardwareInformationViewController = storyboard.instantiateViewController(withIdentifier: "HardwareInformation") as! HardwareInformationTableViewController
             return hardwareInformationViewController
         default:
             return batteryHealthViewController
@@ -47,14 +47,6 @@ class PageModelController: NSObject, UIPageViewControllerDataSource {
     
     func indexOfViewController(_ viewController: UIViewController) -> Int {
         return pageIdentifier.index(of: viewController.restorationIdentifier!) ?? NSNotFound
-    }
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return 3
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-       return 3
     }
 
 }

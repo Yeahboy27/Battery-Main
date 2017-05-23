@@ -25,6 +25,8 @@ class BatteryView: UIView {
     public var borderColor: UIColor = UIColor.red {
         didSet {
             self.layer.borderColor = self.borderColor.cgColor
+            
         }
     }
+    
 }
