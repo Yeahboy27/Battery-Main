@@ -21,6 +21,7 @@ class ChargerInfoTableViewController: UITableViewController {
         updateAdapterDetails()
         NotificationCenter.default.addObserver(self, selector: #selector(batteryStateDidChange), name: .UIDeviceBatteryStateDidChange, object: nil)
         NotificationCenter.default.addObserver(TimeRemainingViewController(), selector: #selector(TimeRemainingViewController.batteryDidChange), name: .UIDeviceBatteryStateDidChange, object: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {

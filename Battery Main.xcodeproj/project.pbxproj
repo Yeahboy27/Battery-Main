@@ -10,16 +10,20 @@
 		0410F3361ED2811B001AEF56 /* HardwareInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410F3351ED2811B001AEF56 /* HardwareInformationTableViewController.swift */; };
 		04399E001ED3F22200638270 /* GeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04399DFF1ED3F22200638270 /* GeneralTableViewController.swift */; };
 		046524E61ECBFA3C00D91E2A /* Indincator View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046524E51ECBFA3C00D91E2A /* Indincator View.swift */; };
+		046C93C31ED868B7008E0D0F /* MemoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C93C21ED868B7008E0D0F /* MemoryTableViewController.swift */; };
+		046C93C51ED8703C008E0D0F /* StorageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C93C41ED8703C008E0D0F /* StorageTableViewController.swift */; };
 		048793F71ECA93FD00261DA9 /* BatteryInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048793F61ECA93FD00261DA9 /* BatteryInfoTableViewController.swift */; };
 		048793F91ECA942100261DA9 /* ChargerInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048793F81ECA942100261DA9 /* ChargerInfoTableViewController.swift */; };
 		048793FC1ECA9DFC00261DA9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048793FB1ECA9DFC00261DA9 /* UIKit.framework */; };
 		048794021ECA9E1D00261DA9 /* EEIOKitListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 048793FF1ECA9E1D00261DA9 /* EEIOKitListener.m */; };
 		048794051ECA9FBC00261DA9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048794041ECA9FBC00261DA9 /* Constants.swift */; };
 		048794091ECABA7D00261DA9 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048794081ECABA7D00261DA9 /* IOKit.framework */; };
+		048E46431ED82B2000D75B8B /* GpuInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E46421ED82B2000D75B8B /* GpuInfoTableViewController.swift */; };
 		04A9BA991ECFEB9200A9BE8C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9BA981ECFEB9200A9BE8C /* Color.swift */; };
 		04A9BABB1ED0225E00A9BE8C /* WaveLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9BABA1ED0225E00A9BE8C /* WaveLoadingIndicator.swift */; };
 		04CA97081ECD3D96006E66CB /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA97071ECD3D96006E66CB /* BatteryView.swift */; };
 		04CA970A1ECD5144006E66CB /* TimeRemainingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA97091ECD5144006E66CB /* TimeRemainingTableViewController.swift */; };
+		04CDFF861ED69857002587C7 /* CpuInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFF851ED69857002587C7 /* CpuInfoTableViewController.swift */; };
 		04F24A611EC94736006E84FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F24A601EC94736006E84FD /* AppDelegate.swift */; };
 		04F24A681EC94736006E84FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F24A661EC94736006E84FD /* Main.storyboard */; };
 		04F24A6A1EC94736006E84FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F24A691EC94736006E84FD /* Assets.xcassets */; };
@@ -35,6 +39,8 @@
 		0410F3351ED2811B001AEF56 /* HardwareInformationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareInformationTableViewController.swift; sourceTree = "<group>"; };
 		04399DFF1ED3F22200638270 /* GeneralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewController.swift; sourceTree = "<group>"; };
 		046524E51ECBFA3C00D91E2A /* Indincator View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Indincator View.swift"; sourceTree = "<group>"; };
+		046C93C21ED868B7008E0D0F /* MemoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTableViewController.swift; sourceTree = "<group>"; };
+		046C93C41ED8703C008E0D0F /* StorageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTableViewController.swift; sourceTree = "<group>"; };
 		048793F61ECA93FD00261DA9 /* BatteryInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryInfoTableViewController.swift; sourceTree = "<group>"; };
 		048793F81ECA942100261DA9 /* ChargerInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargerInfoTableViewController.swift; sourceTree = "<group>"; };
 		048793FB1ECA9DFC00261DA9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -44,10 +50,12 @@
 		048794001ECA9E1D00261DA9 /* EEIOKitListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEIOKitListener.h; sourceTree = "<group>"; };
 		048794041ECA9FBC00261DA9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		048794081ECABA7D00261DA9 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		048E46421ED82B2000D75B8B /* GpuInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpuInfoTableViewController.swift; sourceTree = "<group>"; };
 		04A9BA981ECFEB9200A9BE8C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		04A9BABA1ED0225E00A9BE8C /* WaveLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveLoadingIndicator.swift; sourceTree = "<group>"; };
 		04CA97071ECD3D96006E66CB /* BatteryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 		04CA97091ECD5144006E66CB /* TimeRemainingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRemainingTableViewController.swift; sourceTree = "<group>"; };
+		04CDFF851ED69857002587C7 /* CpuInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CpuInfoTableViewController.swift; sourceTree = "<group>"; };
 		04F24A5D1EC94736006E84FD /* Battery Main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battery Main.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F24A601EC94736006E84FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F24A671EC94736006E84FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +88,10 @@
 		043DC0C91ED4148500C93EB1 /* Hardware */ = {
 			isa = PBXGroup;
 			children = (
+				046C93C41ED8703C008E0D0F /* StorageTableViewController.swift */,
+				046C93C21ED868B7008E0D0F /* MemoryTableViewController.swift */,
+				048E46421ED82B2000D75B8B /* GpuInfoTableViewController.swift */,
+				04CDFF851ED69857002587C7 /* CpuInfoTableViewController.swift */,
 				04399DFF1ED3F22200638270 /* GeneralTableViewController.swift */,
 			);
 			name = Hardware;
@@ -318,9 +330,12 @@
 			files = (
 				04399E001ED3F22200638270 /* GeneralTableViewController.swift in Sources */,
 				04F24A611EC94736006E84FD /* AppDelegate.swift in Sources */,
+				046C93C51ED8703C008E0D0F /* StorageTableViewController.swift in Sources */,
 				048793F71ECA93FD00261DA9 /* BatteryInfoTableViewController.swift in Sources */,
 				04A9BABB1ED0225E00A9BE8C /* WaveLoadingIndicator.swift in Sources */,
+				048E46431ED82B2000D75B8B /* GpuInfoTableViewController.swift in Sources */,
 				04F24AA11EC95345006E84FD /* TimeRemainingViewController.swift in Sources */,
+				046C93C31ED868B7008E0D0F /* MemoryTableViewController.swift in Sources */,
 				04CA970A1ECD5144006E66CB /* TimeRemainingTableViewController.swift in Sources */,
 				04F24A991EC94D36006E84FD /* BatteryHealthViewController.swift in Sources */,
 				04F24A9B1EC94E11006E84FD /* PageModelController.swift in Sources */,
@@ -330,6 +345,7 @@
 				04F24A971EC94B17006E84FD /* MainViewController.swift in Sources */,
 				04CA97081ECD3D96006E66CB /* BatteryView.swift in Sources */,
 				0410F3361ED2811B001AEF56 /* HardwareInformationTableViewController.swift in Sources */,
+				04CDFF861ED69857002587C7 /* CpuInfoTableViewController.swift in Sources */,
 				048793F91ECA942100261DA9 /* ChargerInfoTableViewController.swift in Sources */,
 				048794021ECA9E1D00261DA9 /* EEIOKitListener.m in Sources */,
 			);

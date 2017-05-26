@@ -19,6 +19,9 @@
 
 #import <Foundation/Foundation.h>
 #import "IOKit.h"
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#include <mach/machine.h>
 
 #define kEEIOKitListenerNewDataNotification @"EEIOKitListenerNewDataNotification"
 
@@ -36,9 +39,8 @@
 @property NSDictionary *sharePower;
 
 + (instancetype) sharedEEIOKitListener;
-
+- (NSString *)getCPUType;
 - (void) startListener;
 - (void) requestDataRefresh;
 - (void) stopListener;
-
 @end

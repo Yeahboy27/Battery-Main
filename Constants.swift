@@ -46,3 +46,31 @@ let constantTimeRemaining : Dictionary<String, [Double]> = [
     "iPad (5th generation)": [10, 9, 10, 10, 10, 200]
 ]
 
+let detailCPU: Dictionary<String,[String]> = [
+"ARM Cortex-A8": ["1","1000", "32", "32", "512", "PowerVR SGX535"],
+"Apple A5": ["2", "1000", "32", "32", "1024", "PowerVR SGX543MP2"],
+"Apple A5X": ["2", "1000", "32","32", "1024", "PowerVR SGX543MP4"],
+"Apple A6": ["2", "1300", "32", "32", "1024", "PowerVR SGX543MP3"],
+"Apple A6X": ["2", "1400", "32", "32", "1024", "PowerVR SGX554MP4"],
+"Apple A7": ["2", "1400", "64", "64", "1024", "PowerVR G6430"],
+"Apple A8": ["2"," 1400", "64", "64", "1024", "PowerVR  GX6450"],
+"Apple A8X": ["3", "1500", "64", "64", "2048", "PowerVR  GXA6850"],
+"Apple A9": ["2", "1850", "64", "64", "3072", "PowerVR GT7600"],
+"Apple A9X": ["2", "2260", "64", "64", "3072", "PowerVR Series7XT"],
+"Apple A10":["4", "2340","64", "64", "3072", "PowerVR GT7600 Plus"]
+]
+
+let cpuForDeviceName: Dictionary< String, String> = [
+"iPhone 3G":"ARM Cortex-A8", "iPhone 3GS":"ARM Cortex-A8", "iPhone 4":"ARM Cortex-A8",  "iPad 1":"ARM Cortex-A8",
+"iPhone 4S":"Apple A5", "iPad 2": "Apple A5","iPad Mini": "Apple A5",
+"iPhone 5":"Apple A6","iPhone 5c":"Apple A6",
+"iPad 3":"Apple A5X",
+"iPad 4":"Apple A6X",
+"iPhone 5s":"Apple A7","iPad Mini 2":"Apple A7", "iPad Mini 3":"Apple A7",   "iPad Air":"Apple A7",
+"iPhone 6":"Apple A8", "iPhone 6 Plus":"Apple A8", "iPad Mini 4":"Apple A8",
+"iPad Air 2":"Apple A8X",
+"iPhone 6s":"Apple A9",  "iPhone 6s Plus":"Apple A9", "iPhone SE":"Apple A9","iPad (5th generation)":"Apple A9",
+"iPad Pro 9.7 inch":"Apple A9X", "iPad Pro 12.9 inch":"Apple A9X",
+"iPhone 7":"Apple A10", "iPhone 7 Plus": "Apple A10"
+]
+
