@@ -11,9 +11,10 @@ import SystemServices
 
 class MemoryTableViewController: UITableViewController {
 
-    @IBAction func cacel(_ sender: Any) {
+    @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+
     
     @IBOutlet weak var freeLabel: UILabel!
     @IBOutlet weak var inactiveLabel: UILabel!

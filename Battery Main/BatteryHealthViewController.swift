@@ -12,11 +12,13 @@ class BatteryHealthViewController: UIViewController {
     var quality: String = "Excellent"
     var durability: Double = 1
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var circleIndicator: ActivityIndicatorView!
     @IBOutlet weak var qualityLabel: UILabel!
     @IBOutlet weak var waveIndicator: WaveLoadingIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         durability = UserDefaults.standard.double(forKey: "Durability")
         waveIndicator.progress = durability
         
@@ -47,7 +49,8 @@ class BatteryHealthViewController: UIViewController {
             circleIndicator.color = excellentColor
         }
     }
-
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

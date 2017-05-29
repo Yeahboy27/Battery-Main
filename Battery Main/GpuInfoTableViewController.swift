@@ -23,18 +23,14 @@ class GpuInfoTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if(section == 0) {
             return 1
         } else {
@@ -42,13 +38,6 @@ class GpuInfoTableViewController: UITableViewController {
         }
     }
     
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if(section == 0) {
-//            return "GPU Information"
-//        } else {
-//            return "OpenGL Information"
-//        }
-//    }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
         header.contentView.backgroundColor = UIColor(hexString: "1F1F1F", alpha: 0.8)

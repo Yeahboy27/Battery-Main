@@ -36,11 +36,6 @@ class CpuInfoTableViewController: UITableViewController {
             cachel1DLabel.text = _cpuName[3] + " KB"
             cacheL2Label.text = _cpuName[4] + " KB"
         }
-//        
-//        frequencyLabel.text = String(describing: detailCPU[cpuForDeviceName[UIDevice.current.userDeviceName()]!]?[1])
-//        cache1ILabel.text = String(describing: detailCPU[cpuForDeviceName[UIDevice.current.userDeviceName()]!]?[2]) + " KB"
-//        cachel1DLabel.text = String(describing: detailCPU[cpuForDeviceName[UIDevice.current.userDeviceName()]!]?[3]) + " KB"
-//        cacheL2Label.text = String(describing: detailCPU[cpuForDeviceName[UIDevice.current.userDeviceName()]!]?[4]) + " KB"
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,5 +49,9 @@ class CpuInfoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

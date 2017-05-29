@@ -164,10 +164,24 @@ class WaveLoadingIndicator: UIView {
         curvePath.addLine(to: CGPoint(x: curvePath.currentPoint.x, y: self.bounds.size.height))
         curvePath.addLine(to: CGPoint(x: CGFloat(originX), y: self.bounds.size.height))
         curvePath.close()
-        
         fillColor.setFill()
+//        UIColor.clear.setFill()
         curvePath.lineWidth = 10
         curvePath.fill()
+        
+//        let arc = CAShapeLayer()
+//        arc.path = curvePath.cgPath
+//        arc.position = CGPoint(x: 0, y: 0)
+//        
+//        
+//        let gradient = CAGradientLayer()
+//        gradient.frame = self.frame
+//        gradient.colors = [UIColor.white.cgColor, UIColor(red: 0, green: 1, blue: 1, alpha: 0.4).cgColor]
+//        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        self.layer.addSublayer(gradient)
+//        layer.mask = arc
+        
     }
     
     
