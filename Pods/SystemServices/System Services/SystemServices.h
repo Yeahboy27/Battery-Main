@@ -302,7 +302,6 @@
 @property (nonatomic, readonly, nullable) NSString *uniqueID;
 
 // Device Signature
-@property (nonatomic, readonly, nullable) NSString *deviceSignature;
 
 // CFUUID
 @property (nonatomic, readonly, nullable) NSString *cfuuid;

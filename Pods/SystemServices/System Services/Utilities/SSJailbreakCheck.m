@@ -101,10 +101,6 @@ enum {
         }
         
         // Shell Check
-        if ([self systemCheck] != NOTJAIL) {
-            // Jailbroken
-            motzart += 2;
-        }
     }
     
     // Symbolic Link Check
@@ -262,21 +258,7 @@ enum {
 }
 
 // System() available
-+ (int)systemCheck {
-    @try {
-        // See if the system call can be used
-        if (system(0)) {
-            // Jailbroken
-            return KFSystem;
-        } else
-            // Not Jailbroken
-            return NOTJAIL;
-    }
-    @catch (NSException *exception) {
-        // Not Jailbroken
-        return NOTJAIL;
-    }
-}
+
 
 // Symbolic Link available
 + (int)symbolicLinkCheck {

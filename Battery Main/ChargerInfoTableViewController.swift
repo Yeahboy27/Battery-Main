@@ -44,7 +44,7 @@ class ChargerInfoTableViewController: UITableViewController {
     func batteryStateDidChange(_ notification: Notification) {
         switch batteryState {
         case .unplugged, .unknown:
-            source.text = "Unkown"
+            source.text = "Unknown"
             amperage.text = "0.00 mA"
             power.text = "0.00 W"
         case .charging, .full:

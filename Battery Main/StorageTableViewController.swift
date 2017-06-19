@@ -11,9 +11,7 @@ import SystemServices
 
 class StorageTableViewController: UITableViewController {
 
-    @IBAction func cacel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    
     @IBOutlet weak var usedLabel: UILabel!
     @IBOutlet weak var freeLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -21,9 +19,19 @@ class StorageTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.alwaysBounceVertical = false
         totalLabel.text = SystemServices().diskSpace
         freeLabel.text = SystemServices().freeDiskSpaceinRaw
         usedLabel.text = SystemServices().usedDiskSpaceinRaw
+        self.navigationController?.setNavigationBarHidden(false, animated:false)
+        let myBackButton:UIButton = UIButton.init(type: .custom)
+        myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
+        myBackButton.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
+        myBackButton.setTitle(" ", for: .normal)
+        myBackButton.setTitleColor(.blue, for: .normal)
+        myBackButton.sizeToFit()
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
+        self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,5 +46,12 @@ class StorageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    func popToRoot(sender:UIBarButtonItem){
+        _ = self.navigationController?.popToRootViewController(animated: true)
+    }
 }

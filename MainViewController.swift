@@ -20,10 +20,12 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
     var _modelController: PageModelController? = nil
     
     @IBOutlet weak var pageControl: UIPageControl!
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.8)]
+        self.title = "Battery Data"
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.pageViewController?.delegate = self
         self.pageControl.numberOfPages = 3
@@ -55,7 +57,26 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
     }
     
     func indexOfViewController(_ viewController: UIViewController) -> Int {
+        if let index = pageIdentifier.index(of: viewController.restorationIdentifier!) {
+            switch(index) {
+            case 0:
+                self.title = "Battery Data"
+                break
+            case 1:
+                self.title = "Time Remaining"
+                break
+            case 2:
+                self.title = "Device"
+                break
+            default:
+                self.title = "Battery Data"
+                break
+            }
+        }
         return pageIdentifier.index(of: viewController.restorationIdentifier!) ?? NSNotFound
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

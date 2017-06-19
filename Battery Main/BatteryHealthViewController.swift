@@ -10,44 +10,53 @@ import UIKit
 
 class BatteryHealthViewController: UIViewController {
     var quality: String = "Excellent"
-    var durability: Double = 1
-
+    var durability: Double = 0.95
+    var wave = SPWaterProgressIndicatorView.init(frame: .zero)
+    var wave1 = SPWaterProgressIndicatorView.init(frame: .zero)
+    
+    @IBOutlet weak var DuraLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var circleIndicator: ActivityIndicatorView!
     @IBOutlet weak var qualityLabel: UILabel!
-    @IBOutlet weak var waveIndicator: WaveLoadingIndicator!
+    @IBOutlet weak var waveIndicator: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         durability = UserDefaults.standard.double(forKey: "Durability")
-        waveIndicator.progress = durability
+        DuraLabel.text = String(format: "%.0f", 100 * durability) + "%"
+        waveIndicator.makeCircular()
+        let durawave = durability - 0.05
+        wave = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 20, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2 , height: self.waveIndicator.bounds.width * 2))
+        wave.completionInPercent = Int(100 * durawave)
+        wave1 = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 50, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2, height: self.waveIndicator.bounds.width * 2))
+        wave1.completionInPercent = Int(100 * durawave)
         
-        if(durability < 0.75) {
+        if(durability < 0.7) {
             let badColor  = UIColor(hexString: "FF5700")
             qualityLabel.text = "Bad"
             qualityLabel.textColor = badColor
-            waveIndicator.heavyColor = badColor!
-            waveIndicator.clipCircleColor = badColor!
-            waveIndicator.lightColor = UIColor(red: (badColor?.components.red)!
-                , green: (badColor?.components.green)! , blue: (badColor?.components.blue)!, alpha: 0.5)
+            wave.waveColor = badColor!.withAlphaComponent(0.8)
+            wave1.waveColor = badColor!.withAlphaComponent(0.8)
             circleIndicator.color = UIColor(hexString: "FF5700")!
-        } else if (0.75 <= durability && durability < 0.85) {
+        } else if (0.7 <= durability && durability < 0.85) {
             let averageColor = UIColor(hexString: "F8E71C")!
             qualityLabel.text = "Average"
             qualityLabel.textColor = averageColor
-            waveIndicator.heavyColor = averageColor
-            waveIndicator.clipCircleColor = averageColor
-            waveIndicator.lightColor = UIColor(red: averageColor.redValue, green: averageColor.greenValue, blue: averageColor.blueValue, alpha: 0.5)
+            wave.waveColor = averageColor.withAlphaComponent(0.8)
+            wave1.waveColor = averageColor.withAlphaComponent(0.8)
             circleIndicator.color = averageColor
         } else {
             let excellentColor = UIColor(hexString: "7ED321")!
             qualityLabel.text = "Excellent"
             qualityLabel.textColor = excellentColor
-            waveIndicator.heavyColor = excellentColor
-            waveIndicator.clipCircleColor = excellentColor
-            waveIndicator.lightColor = UIColor(red: excellentColor.redValue, green: excellentColor.greenValue, blue: excellentColor.blueValue, alpha: 0.5)
+            wave.waveColor = excellentColor.withAlphaComponent(0.8)
+            wave1.waveColor = excellentColor.withAlphaComponent(0.8)
             circleIndicator.color = excellentColor
         }
+        self.waveIndicator.addSubview(wave)
+        self.waveIndicator.addSubview(wave1)
+        waveIndicator.bringSubview(toFront: DuraLabel)
     }
     
    
@@ -65,6 +74,8 @@ class BatteryHealthViewController: UIViewController {
         shapeLayer.lineWidth = 3.0
         self.view.layer.addSublayer(shapeLayer)
     }
+    
+    
 }
 
 extension UIColor {
@@ -105,4 +116,13 @@ extension UIColor {
         return (coreImageColor.red, coreImageColor.green, coreImageColor.blue, coreImageColor.alpha)
     }
 }
+
+extension UIView {
+    func makeCircular() {
+        self.layer.cornerRadius = 100
+        self.clipsToBounds = true
+    }
+}
+
+
 

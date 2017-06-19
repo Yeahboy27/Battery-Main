@@ -11,11 +11,6 @@ import SystemServices
 
 class MemoryTableViewController: UITableViewController {
 
-    @IBAction func cancel(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    
     @IBOutlet weak var freeLabel: UILabel!
     @IBOutlet weak var inactiveLabel: UILabel!
     @IBOutlet weak var activeLabel: UILabel!
@@ -23,11 +18,22 @@ class MemoryTableViewController: UITableViewController {
     @IBOutlet weak var totalLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+    self.tableView.alwaysBounceVertical = false
     totalLabel.text = String(Int(SystemServices().totalMemory)) + " MB"
     wiredLabel.text = String(Int(SystemServices().wiredMemoryinRaw)) + " MB"
     activeLabel.text = String(Int(SystemServices().activeMemoryinRaw)) + " MB"
     inactiveLabel.text = String(Int(SystemServices().inactiveMemoryinRaw)) + " MB"
     freeLabel.text = String(Int(SystemServices().freeMemoryinRaw)) + " MB"
+    
+        self.navigationController?.setNavigationBarHidden(false, animated:false)
+        let myBackButton:UIButton = UIButton.init(type: .custom)
+        myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
+        myBackButton.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
+        myBackButton.setTitle(" ", for: .normal)
+        myBackButton.setTitleColor(.blue, for: .normal)
+        myBackButton.sizeToFit()
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
+        self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,8 +48,14 @@ class MemoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
-
+    func popToRoot(sender:UIBarButtonItem){
+        _ = self.navigationController?.popToRootViewController(animated: true)
+    }
     
 
 }

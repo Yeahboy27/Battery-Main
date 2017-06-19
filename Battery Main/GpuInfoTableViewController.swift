@@ -12,13 +12,21 @@ class GpuInfoTableViewController: UITableViewController {
 
     @IBOutlet weak var openGLLabel: UILabel!
     @IBOutlet weak var gpuLabel: UILabel!
-    @IBAction func cacel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.alwaysBounceVertical = false
         openGLLabel.text = "OpenGL 2.0 GPU " + cpuForDeviceName[UIDevice.current.userDeviceName()]!
         gpuLabel.text = detailCPU[cpuForDeviceName[UIDevice.current.userDeviceName()]!]?[5]
+        
+        self.navigationController?.setNavigationBarHidden(false, animated:false)
+        let myBackButton:UIButton = UIButton.init(type: .custom)
+        myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
+        myBackButton.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
+        myBackButton.setTitle(" ", for: .normal)
+        myBackButton.setTitleColor(.blue, for: .normal)
+        myBackButton.sizeToFit()
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
+        self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +55,13 @@ class GpuInfoTableViewController: UITableViewController {
         header.textLabel?.textAlignment = .left
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    func popToRoot(sender:UIBarButtonItem){
+        _ = self.navigationController?.popToRootViewController(animated: true)
+    }
 
 }
 extension UIColor {
