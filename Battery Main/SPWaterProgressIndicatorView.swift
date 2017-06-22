@@ -203,14 +203,15 @@ class SPWaterProgressIndicatorView: UIView {
         
         
         let startColor = UIColor(hexString: "1F1F1F")!.withAlphaComponent(0)
-        let endColor: UIColor = UIColor(hexString: "1F1F1F")!.withAlphaComponent(1)
+        let endColor: UIColor = UIColor(hexString: "1F1F1F")!.withAlphaComponent(0.75)
+
         let colors = [startColor.cgColor, endColor.cgColor]
         
         //3 - set up the color space
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
         //4 - set up the color stops
-        let colorLocations:[CGFloat] = [0 , 0.7]
+        let colorLocations:[CGFloat] = [0.2 , 0.7]
         
         //5 - create the gradient
         let gradient = CGGradient(colorsSpace: colorSpace,

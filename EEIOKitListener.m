@@ -21,10 +21,7 @@
     
     IOMasterPort(MACH_PORT_NULL, &masterPort);
     _sharePower = CFBridgingRelease(IOPSCopyExternalPowerAdapterDetails());
-     CFTypeRef *draven = IOPSCopyPowerSourcesInfo();
-     _sharePowerSource = CFBridgingRelease(IOPSCopyPowerSourcesList(draven));
-    
-     CFMutableDictionaryRef serviceDict = IOServiceMatching("AppleARMPMUCharger");
+    CFMutableDictionaryRef serviceDict = IOServiceMatching("AppleARMPMUCharger");
     charger_entry = IOServiceGetMatchingService(masterPort, serviceDict);
     
     return self;

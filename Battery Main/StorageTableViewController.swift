@@ -48,7 +48,7 @@ class StorageTableViewController: UITableViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     func popToRoot(sender:UIBarButtonItem){

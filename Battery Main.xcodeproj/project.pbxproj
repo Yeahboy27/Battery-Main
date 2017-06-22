@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0410F3361ED2811B001AEF56 /* HardwareInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410F3351ED2811B001AEF56 /* HardwareInformationTableViewController.swift */; };
+		041C07011EF7AF7A0029CA9A /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C07001EF7AF7A0029CA9A /* CircleView.swift */; };
 		04399E001ED3F22200638270 /* GeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04399DFF1ED3F22200638270 /* GeneralTableViewController.swift */; };
 		045837351EF4E86600F5C0E1 /* SPWaterProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045837341EF4E86600F5C0E1 /* SPWaterProgressIndicatorView.swift */; };
 		046524E61ECBFA3C00D91E2A /* Indincator View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046524E51ECBFA3C00D91E2A /* Indincator View.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0410F3351ED2811B001AEF56 /* HardwareInformationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareInformationTableViewController.swift; sourceTree = "<group>"; };
+		041C07001EF7AF7A0029CA9A /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		04399DFF1ED3F22200638270 /* GeneralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewController.swift; sourceTree = "<group>"; };
 		045837341EF4E86600F5C0E1 /* SPWaterProgressIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPWaterProgressIndicatorView.swift; sourceTree = "<group>"; };
 		046524E51ECBFA3C00D91E2A /* Indincator View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Indincator View.swift"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		046524E71ECBFD3C00D91E2A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				041C07001EF7AF7A0029CA9A /* CircleView.swift */,
 				04CA97071ECD3D96006E66CB /* BatteryView.swift */,
 				046524E51ECBFA3C00D91E2A /* Indincator View.swift */,
 				045837341EF4E86600F5C0E1 /* SPWaterProgressIndicatorView.swift */,
@@ -340,6 +343,7 @@
 				04F24A991EC94D36006E84FD /* BatteryHealthViewController.swift in Sources */,
 				04F24A9B1EC94E11006E84FD /* PageModelController.swift in Sources */,
 				048794051ECA9FBC00261DA9 /* Constants.swift in Sources */,
+				041C07011EF7AF7A0029CA9A /* CircleView.swift in Sources */,
 				046524E61ECBFA3C00D91E2A /* Indincator View.swift in Sources */,
 				045837351EF4E86600F5C0E1 /* SPWaterProgressIndicatorView.swift in Sources */,
 				04F24A971EC94B17006E84FD /* MainViewController.swift in Sources */,

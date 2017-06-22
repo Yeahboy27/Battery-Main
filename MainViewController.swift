@@ -77,6 +77,6 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
 }

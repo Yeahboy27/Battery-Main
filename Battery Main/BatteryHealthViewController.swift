@@ -19,13 +19,15 @@ class BatteryHealthViewController: UIViewController {
     @IBOutlet weak var circleIndicator: ActivityIndicatorView!
     @IBOutlet weak var qualityLabel: UILabel!
     @IBOutlet weak var waveIndicator: UIView!
+    @IBOutlet weak var reviewCapacityLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         durability = UserDefaults.standard.double(forKey: "Durability")
         DuraLabel.text = String(format: "%.0f", 100 * durability) + "%"
-        waveIndicator.makeCircular()
         let durawave = durability - 0.05
         wave = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 20, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2 , height: self.waveIndicator.bounds.width * 2))
         wave.completionInPercent = Int(100 * durawave)
@@ -39,6 +41,7 @@ class BatteryHealthViewController: UIViewController {
             wave.waveColor = badColor!.withAlphaComponent(0.8)
             wave1.waveColor = badColor!.withAlphaComponent(0.8)
             circleIndicator.color = UIColor(hexString: "FF5700")!
+            reviewCapacityLabel.text = "Your wear levels is Very Low. No need to worry about your Battery."
         } else if (0.7 <= durability && durability < 0.85) {
             let averageColor = UIColor(hexString: "F8E71C")!
             qualityLabel.text = "Average"
@@ -46,6 +49,7 @@ class BatteryHealthViewController: UIViewController {
             wave.waveColor = averageColor.withAlphaComponent(0.8)
             wave1.waveColor = averageColor.withAlphaComponent(0.8)
             circleIndicator.color = averageColor
+            reviewCapacityLabel.text = "Your wear levels is  Average. Becareful with your battery."
         } else {
             let excellentColor = UIColor(hexString: "7ED321")!
             qualityLabel.text = "Excellent"
@@ -53,6 +57,7 @@ class BatteryHealthViewController: UIViewController {
             wave.waveColor = excellentColor.withAlphaComponent(0.8)
             wave1.waveColor = excellentColor.withAlphaComponent(0.8)
             circleIndicator.color = excellentColor
+            reviewCapacityLabel.text = "Your wear levels is Very High. You should replace your battery soon."
         }
         self.waveIndicator.addSubview(wave)
         self.waveIndicator.addSubview(wave1)
@@ -75,8 +80,18 @@ class BatteryHealthViewController: UIViewController {
         self.view.layer.addSublayer(shapeLayer)
     }
     
-    
+    override func viewDidLayoutSubviews() {
+         scrollView.contentSize.height = 900
+    }
 }
+
+extension BatteryHealthViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.contentSize.height = 900
+        scrollView.contentMode = .bottom
+    }
+}
+
 
 extension UIColor {
     public convenience init?(hexString: String) {
@@ -117,12 +132,7 @@ extension UIColor {
     }
 }
 
-extension UIView {
-    func makeCircular() {
-        self.layer.cornerRadius = 100
-        self.clipsToBounds = true
-    }
-}
+
 
 
 
