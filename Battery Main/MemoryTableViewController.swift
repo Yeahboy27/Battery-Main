@@ -24,7 +24,7 @@ class MemoryTableViewController: UITableViewController {
     activeLabel.text = String(Int(SystemServices().activeMemoryinRaw)) + " MB"
     inactiveLabel.text = String(Int(SystemServices().inactiveMemoryinRaw)) + " MB"
     freeLabel.text = String(Int(SystemServices().freeMemoryinRaw)) + " MB"
-    
+        self.title = "Memory"
         self.navigationController?.setNavigationBarHidden(false, animated:false)
         let myBackButton:UIButton = UIButton.init(type: .custom)
         myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
@@ -57,5 +57,15 @@ class MemoryTableViewController: UITableViewController {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(hexString: "191919")?.withAlphaComponent(0.6)
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.systemFont(ofSize: 17)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 
 }

@@ -31,6 +31,7 @@ class GeneralTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.alwaysBounceVertical = false
+        self.tableView.delegate = self
         let windowRect = UIScreen.main.nativeBounds.size
         let windowWidth = Int(windowRect.width)
         let windowHeight = Int(windowRect.height)
@@ -54,6 +55,7 @@ class GeneralTableViewController: UITableViewController {
         
         
         self.navigationController?.setNavigationBarHidden(false, animated:false)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.8)]
         let myBackButton:UIButton = UIButton.init(type: .custom)
         myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
         myBackButton.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
@@ -75,6 +77,17 @@ class GeneralTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(hexString: "191919")?.withAlphaComponent(0.6)
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont.systemFont(ofSize: 17)
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 
     override var prefersStatusBarHidden: Bool {
         return false
@@ -83,6 +96,6 @@ class GeneralTableViewController: UITableViewController {
     func popToRoot(sender:UIBarButtonItem){
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
 }
+
+

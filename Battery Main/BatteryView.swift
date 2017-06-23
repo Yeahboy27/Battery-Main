@@ -10,7 +10,7 @@ import UIKit
 @IBDesignable
 class BatteryView: UIView {
     @IBInspectable
-    public var cornerRadius: CGFloat = 2.0 {
+    public var cornerRadius: CGFloat = 5.0 {
         didSet {
             self.layer.cornerRadius = self.cornerRadius
         }

@@ -21,8 +21,6 @@ class TimeRemainingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         durability = UserDefaults.standard.double(forKey: "Durability")
         
         talktimeLabel.text = String(describing:  getTimeFromHourToHourAndMinutes((constantTimeRemaining[UIDevice.current.userDeviceName()]?[0])! * Double(UIDevice.current.batteryLevel) * durability))

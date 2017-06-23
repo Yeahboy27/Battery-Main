@@ -22,6 +22,7 @@ class CpuInfoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         self.tableView.alwaysBounceVertical = false
         cpuNameLabel.text = cpuForDeviceName[UIDevice.current.userDeviceName()]
         architectureLabel.text = EEIOKitListener.shared().getCPUType()
@@ -33,7 +34,7 @@ class CpuInfoTableViewController: UITableViewController {
             cachel1DLabel.text = _cpuName[3] + " KB"
             cacheL2Label.text = _cpuName[4] + " KB"
         }
-        
+        self.title = "CPU"
         self.navigationController?.setNavigationBarHidden(false, animated:false)
         let myBackButton:UIButton = UIButton.init(type: .custom)
         myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
@@ -69,4 +70,16 @@ class CpuInfoTableViewController: UITableViewController {
     func popToRoot(sender:UIBarButtonItem){
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(hexString: "191919")?.withAlphaComponent(0.6)
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.systemFont(ofSize: 17)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50 
+    }
+
 }

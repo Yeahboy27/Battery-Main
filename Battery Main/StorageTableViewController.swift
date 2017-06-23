@@ -23,6 +23,7 @@ class StorageTableViewController: UITableViewController {
         totalLabel.text = SystemServices().diskSpace
         freeLabel.text = SystemServices().freeDiskSpaceinRaw
         usedLabel.text = SystemServices().usedDiskSpaceinRaw
+        self.title = "Storage"
         self.navigationController?.setNavigationBarHidden(false, animated:false)
         let myBackButton:UIButton = UIButton.init(type: .custom)
         myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
@@ -53,5 +54,16 @@ class StorageTableViewController: UITableViewController {
     
     func popToRoot(sender:UIBarButtonItem){
         _ = self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(hexString: "191919")?.withAlphaComponent(0.6)
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.systemFont(ofSize: 17)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }

@@ -17,6 +17,7 @@ class TimeRemainingViewController: UIViewController {
        percentage.text = String(describing: Int(100 * (UIDevice.current.batteryLevel))) + "%"
        percentageCurrent.isActive = true
        percentageCurrent = percentageCurrent.setMultiplier(multiplier: CGFloat(UIDevice.current.batteryLevel))
+        
     }
 
     override func didReceiveMemoryWarning() {

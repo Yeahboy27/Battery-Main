@@ -29,9 +29,9 @@ class BatteryHealthViewController: UIViewController {
         durability = UserDefaults.standard.double(forKey: "Durability")
         DuraLabel.text = String(format: "%.0f", 100 * durability) + "%"
         let durawave = durability - 0.05
-        wave = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 20, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2 , height: self.waveIndicator.bounds.width * 2))
+        wave = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 0.12 * self.waveIndicator.frame.width, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2 , height: self.waveIndicator.bounds.width * 2))
         wave.completionInPercent = Int(100 * durawave)
-        wave1 = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 50, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2, height: self.waveIndicator.bounds.width * 2))
+        wave1 = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 0.3 * self.waveIndicator.frame.width , y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2, height: self.waveIndicator.bounds.width * 2))
         wave1.completionInPercent = Int(100 * durawave)
         
         if(durability < 0.7) {
@@ -41,7 +41,7 @@ class BatteryHealthViewController: UIViewController {
             wave.waveColor = badColor!.withAlphaComponent(0.8)
             wave1.waveColor = badColor!.withAlphaComponent(0.8)
             circleIndicator.color = UIColor(hexString: "FF5700")!
-            reviewCapacityLabel.text = "Your wear levels is Very Low. No need to worry about your Battery."
+            reviewCapacityLabel.text = "Your wear levels is Very High. You should replace your battery soon."
         } else if (0.7 <= durability && durability < 0.85) {
             let averageColor = UIColor(hexString: "F8E71C")!
             qualityLabel.text = "Average"
@@ -57,7 +57,7 @@ class BatteryHealthViewController: UIViewController {
             wave.waveColor = excellentColor.withAlphaComponent(0.8)
             wave1.waveColor = excellentColor.withAlphaComponent(0.8)
             circleIndicator.color = excellentColor
-            reviewCapacityLabel.text = "Your wear levels is Very High. You should replace your battery soon."
+            reviewCapacityLabel.text = "Your wear levels is Very Low. No need to worry about your Battery."
         }
         self.waveIndicator.addSubview(wave)
         self.waveIndicator.addSubview(wave1)

@@ -14,10 +14,11 @@ class GpuInfoTableViewController: UITableViewController {
     @IBOutlet weak var gpuLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
         self.tableView.alwaysBounceVertical = false
         openGLLabel.text = "OpenGL 2.0 GPU " + cpuForDeviceName[UIDevice.current.userDeviceName()]!
         gpuLabel.text = detailCPU[cpuForDeviceName[UIDevice.current.userDeviceName()]!]?[5]
-        
+        self.title = "GPU"
         self.navigationController?.setNavigationBarHidden(false, animated:false)
         let myBackButton:UIButton = UIButton.init(type: .custom)
         myBackButton.addTarget(self, action: #selector(self.popToRoot(sender:)), for: .touchUpInside)
@@ -47,22 +48,24 @@ class GpuInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.contentView.backgroundColor = UIColor(hexString: "1F1F1F", alpha: 0.8)
-        header.textLabel?.textColor = UIColor(hexString: "FFFFFF", alpha: 0.8)
-        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        header.textLabel?.frame = header.frame
-        header.textLabel?.textAlignment = .left
+            view.tintColor = UIColor(hexString: "191919")?.withAlphaComponent(0.6)
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.textColor = UIColor.white
+            header.textLabel?.font = UIFont.systemFont(ofSize: 17)
     }
     
     override var prefersStatusBarHidden: Bool {
         return false
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     func popToRoot(sender:UIBarButtonItem){
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
-
+    
 }
 extension UIColor {
     static func colorFormHex(hex: UInt32, alpha: CGFloat) -> UIColor{
