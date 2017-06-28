@@ -28,10 +28,31 @@ class BatteryHealthViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         durability = UserDefaults.standard.double(forKey: "Durability")
         DuraLabel.text = String(format: "%.0f", 100 * durability) + "%"
-        let durawave = durability - 0.05
-        wave = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 0.12 * self.waveIndicator.frame.width, y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2 , height: self.waveIndicator.bounds.width * 2))
+        
+    }
+    
+   
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func drawCircle(center: CGPoint, radius: CGFloat, fillColor: CGColor, strokeColor: CGColor) {
+        let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.cgPath
+        shapeLayer.fillColor = fillColor
+        shapeLayer.strokeColor = strokeColor
+        shapeLayer.lineWidth = 3.0
+        self.view.layer.addSublayer(shapeLayer)
+    }
+    
+    override func viewDidLayoutSubviews() {
+         scrollView.contentSize.height = 900
+        let durawave = durability - 0.03
+        wave = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 0.02 * self.waveIndicator.frame.width , y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2 , height: self.waveIndicator.bounds.width * 2))
         wave.completionInPercent = Int(100 * durawave)
-        wave1 = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 0.3 * self.waveIndicator.frame.width , y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2, height: self.waveIndicator.bounds.width * 2))
+        wave1 = SPWaterProgressIndicatorView(frame: CGRect(x: -self.waveIndicator.frame.width*0.5 + 0.2 * self.waveIndicator.frame.width , y: -self.waveIndicator.frame.width * CGFloat(1 - durawave) , width: self.waveIndicator.bounds.width * 2, height: self.waveIndicator.bounds.width * 2))
         wave1.completionInPercent = Int(100 * durawave)
         
         if(durability < 0.7) {
@@ -62,26 +83,6 @@ class BatteryHealthViewController: UIViewController {
         self.waveIndicator.addSubview(wave)
         self.waveIndicator.addSubview(wave1)
         waveIndicator.bringSubview(toFront: DuraLabel)
-    }
-    
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func drawCircle(center: CGPoint, radius: CGFloat, fillColor: CGColor, strokeColor: CGColor) {
-        let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.fillColor = fillColor
-        shapeLayer.strokeColor = strokeColor
-        shapeLayer.lineWidth = 3.0
-        self.view.layer.addSublayer(shapeLayer)
-    }
-    
-    override func viewDidLayoutSubviews() {
-         scrollView.contentSize.height = 900
     }
 }
 

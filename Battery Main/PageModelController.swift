@@ -8,7 +8,16 @@
 
 import UIKit
 class PageModelController: NSObject, UIPageViewControllerDataSource {
+    
     let pageIdentifier = ["BatteryHealth", "TimeRemaining", "HardwareInformation"]
+//    let batteryHealthViewController = storyboard.instantiateViewController(withIdentifier: "BatteryHealth") as! BatteryHealthViewController
+    //    let timeremainingViewController = storyboard.instantiateViewController(withIdentifier: "TimeRemaining") as! TimeRemainingViewController
+//    let hardwareInformationViewController = storyboard.instantiateViewController(withIdentifier: "HardwareInformation") as! HardwareInformationTableViewController
+    var arrayViewController = [UIViewController]()
+    
+    init(viewControllers: [UIViewController]) {
+        self.arrayViewController = viewControllers
+    }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var index = self.indexOfViewController(viewController)
@@ -30,18 +39,17 @@ class PageModelController: NSObject, UIPageViewControllerDataSource {
     }
     
     func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> UIViewController {
-        let batteryHealthViewController = storyboard.instantiateViewController(withIdentifier: "BatteryHealth") as! BatteryHealthViewController
+        
+
         switch(index) {
         case 0:
-            return batteryHealthViewController
+            return arrayViewController[0]
         case 1:
-            let timeremainingViewController = storyboard.instantiateViewController(withIdentifier: "TimeRemaining") as! TimeRemainingViewController
-            return timeremainingViewController
+            return arrayViewController[1]
         case 2:
-            let hardwareInformationViewController = storyboard.instantiateViewController(withIdentifier: "HardwareInformation") as! HardwareInformationTableViewController
-            return hardwareInformationViewController
+            return arrayViewController[2]
         default:
-            return batteryHealthViewController
+            return arrayViewController[0]
         }
     }
     

@@ -52,6 +52,7 @@ class BatteryInfoTableViewController: UITableViewController {
                     var battery: Double  = Double(_actualBattery/Double(_fullCharged))
                     if(battery > 1) {
                         battery = 1
+                        
                     }
                     UserDefaults.standard.set(battery, forKey: "Durability")
                 }

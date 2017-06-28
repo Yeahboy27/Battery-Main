@@ -10,10 +10,11 @@ import UIKit
 
 class MainViewController: UIViewController, UIPageViewControllerDelegate {
     let pageIdentifier = ["BatteryHealth", "TimeRemaining", "HardwareInformation"]
+    var viewControllerTransitionTo = UIViewController()
     var pageViewController: UIPageViewController?
     var modelController: PageModelController {
         if _modelController == nil {
-            _modelController = PageModelController()
+            _modelController = PageModelController(viewControllers: [UIViewController()])
         }
         return _modelController!
     }
@@ -24,6 +25,10 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let batteryHealthViewController = storyboard?.instantiateViewController(withIdentifier: "BatteryHealth") as! BatteryHealthViewController
+        let timeremainingViewController = storyboard?.instantiateViewController(withIdentifier: "TimeRemaining") as! TimeRemainingViewController
+        let hardwareInformationViewController = storyboard?.instantiateViewController(withIdentifier: "HardwareInformation") as! HardwareInformationTableViewController
+        modelController.arrayViewController = [batteryHealthViewController, timeremainingViewController, hardwareInformationViewController]
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.8)]
         self.title = "Battery Data"
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -48,13 +53,19 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        let pageContentViewController = pendingViewControllers[0]
-        self.pageControl.currentPage = indexOfViewController(pageContentViewController)
+        viewControllerTransitionTo = pendingViewControllers[0]
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if(completed) {
+            self.pageControl.currentPage = indexOfViewController(viewControllerTransitionTo)
+        }
+    }
+    
+    
     
     func indexOfViewController(_ viewController: UIViewController) -> Int {
         if let index = pageIdentifier.index(of: viewController.restorationIdentifier!) {
